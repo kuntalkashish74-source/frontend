@@ -1,0 +1,268 @@
+/* =========================
+   BASIC CSS
+   ========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+
+/* =========================
+   HEADER
+   ========================= */
+
+header {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 25px;
+}
+
+header h1 {
+    margin: 0;
+}
+
+header p {
+    margin-top: 10px;
+}
+
+
+/* =========================
+   SIDEBAR LAYOUT
+   ========================= */
+
+.layout {
+    display: flex;
+    min-height: 400px;
+}
+
+
+/* Sidebar */
+
+.sidebar {
+    width: 220px;
+    background-color: #333;
+    padding: 25px;
+}
+
+.sidebar h2 {
+    color: white;
+    margin-top: 0;
+}
+
+.sidebar a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    padding: 12px;
+    margin-bottom: 8px;
+    background-color: #444;
+}
+
+.sidebar a:hover {
+    background-color: #555;
+}
+
+
+/* Main Content */
+
+.main-content {
+    flex: 1;
+    padding: 40px;
+    background-color: white;
+}
+
+.main-content h2 {
+    margin-top: 0;
+}
+
+
+/* =========================
+   PRODUCT CARD
+   ========================= */
+
+.product-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.product-card {
+    width: 300px;
+
+    /* BOX MODEL */
+
+    margin: 20px auto;
+    padding: 20px;
+    border: 2px solid #333;
+
+    background-color: white;
+    border-radius: 10px;
+}
+
+
+/* Product Image */
+
+.product-image {
+    height: 180px;
+    background-color: #ddd;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    margin-bottom: 15px;
+}
+
+
+/* Product Name */
+
+.product-card h3 {
+    margin: 10px 0;
+}
+
+
+/* Price */
+
+.price {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+
+/* Button */
+
+button {
+    padding: 10px 25px;
+    border: none;
+    background-color: #222;
+    color: white;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #555;
+}
+
+
+/* =========================
+   3 COLUMN BLOG
+   ========================= */
+
+.blog-section {
+    padding: 40px;
+    text-align: center;
+}
+
+.blog-container {
+
+    /* FLEXBOX */
+
+    display: flex;
+
+    justify-content: space-between;
+
+    gap: 20px;
+}
+
+
+.blog-card {
+
+    /* Three columns */
+
+    flex: 1;
+
+    padding: 25px;
+    border: 1px solid #ccc;
+
+    background-color: white;
+
+    border-radius: 10px;
+
+    text-align: left;
+}
+
+
+.blog-card h3 {
+    margin-top: 0;
+}
+
+
+.blog-card a {
+    text-decoration: none;
+    font-weight: bold;
+}
+
+
+/* =========================
+   FOOTER
+   ========================= */
+
+footer {
+    background-color: #222;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+/* =========================
+   MOBILE RESPONSIVE DESIGN
+   ========================= */
+
+@media (max-width: 600px) {
+
+
+    /* SIDEBAR */
+
+    .layout {
+        flex-direction: column;
+    }
+
+
+    .sidebar {
+        width: 100%;
+    }
+
+
+    .sidebar a {
+        text-align: center;
+    }
+
+
+    .main-content {
+        padding: 25px;
+    }
+
+
+    /* PRODUCT CARD */
+
+    .product-card {
+        width: 90%;
+    }
+
+
+    /* BLOG */
+
+    .blog-container {
+        flex-direction: column;
+    }
+
+
+    .blog-card {
+        width: 100%;
+    }
+
+
+    .blog-section {
+        padding: 25px;
+    }
+
+}
