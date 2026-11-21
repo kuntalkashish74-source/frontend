@@ -1,5 +1,5 @@
 
-/* General Styling */
+/* GENERAL STYLING */
 
 body {
     font-family: Arial, sans-serif;
@@ -18,38 +18,43 @@ h2 {
 }
 
 
-/* Container Styling */
+/* CONTAINER */
 
 .container {
     background-color: white;
-    width: 70%;
-    margin: 25px auto;
+    width: 80%;
+    margin: 30px auto;
     padding: 25px;
     border-radius: 10px;
     box-shadow: 0 0 10px gray;
 }
 
 
-/* To-Do List Styling */
+/* TO DO LIST */
 
-input {
+input[type="text"] {
     padding: 10px;
-    width: 50%;
+    width: 40%;
     border: 1px solid gray;
     border-radius: 5px;
 }
 
 button {
-    padding: 10px 15px;
-    background-color: green;
-    color: white;
+    padding: 8px 12px;
+    margin: 3px;
     border: none;
     border-radius: 5px;
+    color: white;
     cursor: pointer;
+    background-color: green;
 }
 
 button:hover {
-    background-color: darkgreen;
+    opacity: 0.8;
+}
+
+#addBtn {
+    background-color: blue;
 }
 
 ul {
@@ -58,70 +63,88 @@ ul {
 }
 
 li {
+    display: flex;
+    align-items: center;
+    gap: 8px;
     background-color: #e6e6e6;
     padding: 12px;
-    margin: 10px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    margin: 10px 0;
     border-radius: 5px;
 }
+
+li span {
+    flex: 1;
+    text-align: left;
+}
+
+/* Completed task */
+
+.completed {
+    text-decoration: line-through;
+    color: gray;
+}
+
+/* Move buttons */
+
+.moveBtn {
+    background-color: orange;
+    font-size: 18px;
+}
+
+/* Remove button */
 
 .deleteBtn {
     background-color: red;
 }
 
-.deleteBtn:hover {
-    background-color: darkred;
+
+/* CHESSBOARD */
+
+#chessboard {
+    display: grid;
+
+    grid-template-columns: repeat(8, 50px);
+
+    grid-template-rows: repeat(8, 50px);
+
+    width: 400px;
+    height: 400px;
+
+    margin: 20px auto;
+
+    border: 4px solid black;
+}
+
+.square {
+    width: 50px;
+    height: 50px;
 }
 
 
-/* Image Gallery Styling */
-
-#mainImage {
-    width: 80%;
-    max-width: 600px;
-    height: 350px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.thumbnails {
-    margin-top: 20px;
-}
-
-.thumbnail {
-    width: 120px;
-    height: 80px;
-    object-fit: cover;
-    margin: 10px;
-    border: 3px solid transparent;
-    border-radius: 5px;
-    cursor: pointer;
-}
-
-.thumbnail:hover {
-    border: 3px solid blue;
-    transform: scale(1.1);
-}
-
-
-/* Responsive Design */
+/* RESPONSIVE DESIGN */
 
 @media (max-width: 600px) {
 
     .container {
-        width: 90%;
+        width: 95%;
+        padding: 10px;
     }
 
-    input {
+    input[type="text"] {
         width: 90%;
         margin-bottom: 10px;
     }
 
-    #mainImage {
-        width: 100%;
-        height: auto;
+    #chessboard {
+        grid-template-columns: repeat(8, 35px);
+        grid-template-rows: repeat(8, 35px);
+        width: 280px;
+        height: 280px;
+    }
+
+    .square {
+        width: 35px;
+        height: 35px;
     }
 
 }
