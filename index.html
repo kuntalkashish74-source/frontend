@@ -2,21 +2,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Advanced DOM Applications</title>
+    <title>DOM Manipulation</title>
 
-    <!-- Linking CSS -->
+    <!-- Linking CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
 
-    <h1>Advanced DOM Manipulation</h1>
+    <h1>Interactive Applications</h1>
 
     <!-- TO DO LIST -->
-
     <div class="container">
 
-        <h2>Advanced To-Do List</h2>
+        <h2>My To-Do List</h2>
 
         <input type="text" id="taskInput"
                placeholder="Enter your task">
@@ -28,32 +27,57 @@
     </div>
 
 
-    <!-- CHESSBOARD -->
-
+    <!-- IMAGE GALLERY -->
     <div class="container">
 
-        <h2>Dynamic Chessboard (8 × 8)</h2>
+        <h2>Image Gallery</h2>
 
-        <div id="chessboard"></div>
+        <!-- Main Image -->
+        <img id="mainImage"
+             src="https://picsum.photos/id/1015/600/350"
+             alt="Main Gallery Image">
+
+        <!-- Thumbnails -->
+        <div class="thumbnails">
+
+            <img class="thumbnail"
+                 src="https://picsum.photos/id/1015/150/100"
+                 data-image="https://picsum.photos/id/1015/600/350"
+                 alt="Mountain">
+
+            <img class="thumbnail"
+                 src="https://picsum.photos/id/1018/150/100"
+                 data-image="https://picsum.photos/id/1018/600/350"
+                 alt="Nature">
+
+            <img class="thumbnail"
+                 src="https://picsum.photos/id/1020/150/100"
+                 data-image="https://picsum.photos/id/1020/600/350"
+                 alt="Forest">
+
+            <img class="thumbnail"
+                 src="https://picsum.photos/id/1024/150/100"
+                 data-image="https://picsum.photos/id/1024/600/350"
+                 alt="Animal">
+
+        </div>
 
     </div>
 
 
+    <!-- JAVASCRIPT CODE -->
     <script>
 
-        // =================================
-        // 1. ADVANCED TO-DO LIST
-        // =================================
-
-        let taskInput = document.getElementById("taskInput");
+        // TO DO LIST FUNCTIONALITY
 
         let addBtn = document.getElementById("addBtn");
+
+        let taskInput = document.getElementById("taskInput");
 
         let taskList = document.getElementById("taskList");
 
 
-        // Function to add task
-
+        // Add task when button is clicked
         addBtn.addEventListener("click", function() {
 
             let task = taskInput.value.trim();
@@ -63,152 +87,53 @@
                 return;
             }
 
-            // Create list item
+            // Create new list item
             let li = document.createElement("li");
 
+            li.textContent = task;
 
-            // Create checkbox
-            let checkbox = document.createElement("input");
-
-            checkbox.type = "checkbox";
-
-
-            // Create task text
-            let span = document.createElement("span");
-
-            span.textContent = task;
-
-
-            // Mark task completed
-            checkbox.addEventListener("change", function() {
-
-                if (checkbox.checked) {
-                    span.classList.add("completed");
-                }
-                else {
-                    span.classList.remove("completed");
-                }
-
-            });
-
-
-            // Create Up button
-            let upBtn = document.createElement("button");
-
-            upBtn.textContent = "↑";
-
-            upBtn.className = "moveBtn";
-
-
-            // Move task up
-            upBtn.addEventListener("click", function() {
-
-                let previous = li.previousElementSibling;
-
-                if (previous) {
-                    taskList.insertBefore(li, previous);
-                }
-
-            });
-
-
-            // Create Down button
-            let downBtn = document.createElement("button");
-
-            downBtn.textContent = "↓";
-
-            downBtn.className = "moveBtn";
-
-
-            // Move task down
-            downBtn.addEventListener("click", function() {
-
-                let next = li.nextElementSibling;
-
-                if (next) {
-                    taskList.insertBefore(next, li);
-                }
-
-            });
-
-
-            // Create Remove button
+            // Create delete button
             let deleteBtn = document.createElement("button");
 
             deleteBtn.textContent = "Remove";
 
             deleteBtn.className = "deleteBtn";
 
-
-            // Remove task
+            // Remove task when clicked
             deleteBtn.addEventListener("click", function() {
-
                 li.remove();
-
             });
 
-
-            // Add elements to list item
-            li.appendChild(checkbox);
-
-            li.appendChild(span);
-
-            li.appendChild(upBtn);
-
-            li.appendChild(downBtn);
-
+            // Add delete button inside list item
             li.appendChild(deleteBtn);
-
 
             // Add list item to task list
             taskList.appendChild(li);
 
-
-            // Clear input
+            // Clear input box
             taskInput.value = "";
 
         });
 
 
+        // IMAGE GALLERY FUNCTIONALITY
 
-        // =================================
-        // 2. DYNAMIC CHESSBOARD
-        // =================================
+        let mainImage = document.getElementById("mainImage");
 
-        let chessboard = document.getElementById("chessboard");
-
-
-        // Generate 8 rows and 8 columns
-
-        for (let row = 0; row < 8; row++) {
-
-            for (let col = 0; col < 8; col++) {
-
-                // Create square
-                let square = document.createElement("div");
-
-                square.classList.add("square");
+        let thumbnails = document.querySelectorAll(".thumbnail");
 
 
-                // Apply black and white colors
-                if ((row + col) % 2 === 0) {
+        // Add click event to every thumbnail
+        thumbnails.forEach(function(image) {
 
-                    square.style.backgroundColor = "white";
+            image.addEventListener("click", function() {
 
-                }
-                else {
+                // Change main image
+                mainImage.src = image.dataset.image;
 
-                    square.style.backgroundColor = "black";
+            });
 
-                }
-
-
-                // Add square to chessboard
-                chessboard.appendChild(square);
-
-            }
-
-        }
+        });
 
     </script>
 
