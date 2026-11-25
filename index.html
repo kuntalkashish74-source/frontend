@@ -2,88 +2,75 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Chess Board</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Async Programming</title>
+
+    <style>
+        body {
+            font-family: Arial;
+            text-align: center;
+            margin-top: 100px;
+            background-color: #f2f2f2;
+        }
+
+        button {
+            padding: 12px 20px;
+            background-color: blue;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #result {
+            margin-top: 20px;
+            font-size: 20px;
+            color: green;
+        }
+    </style>
 </head>
+
 <body>
 
-    <h1>Dynamic chess bord</h1>
+    <h1>Server Data Fetching</h1>
 
-    <div class="chessboard">
+    <p>Click the button to fetch data from server.</p>
 
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
+    <button onclick="fetchData()">Fetch Data</button>
 
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
+    <div id="result"></div>
 
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
+    <script>
+        function fetchData() {
 
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
+            document.getElementById("result").innerHTML =
+                "Fetching data... Please wait!";
 
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
+            // Creating a Promise
+            let promise = new Promise((resolve, reject) => {
 
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
+                // Simulating server delay
+                setTimeout(() => {
 
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
+                    let data = "Data received successfully from server!";
 
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
-        <div class="black"></div>
-        <div class="white"></div>
+                    resolve(data);
 
-    </div>
+                }, 3000);
+
+            });
+
+            // Handling resolved data
+            promise.then((data) => {
+
+                document.getElementById("result").innerHTML = data;
+
+            }).catch((error) => {
+
+                document.getElementById("result").innerHTML = error;
+
+            });
+        }
+    </script>
 
 </body>
 </html>
